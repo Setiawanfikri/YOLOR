@@ -70,12 +70,14 @@ Prepare pretrained weight
 <details><summary> <b>Expand</b> </summary>
 
 * Get Pre-Trained YOLOR_p6.pt
+      
       %cd /content/yolor
       !pip install gdown
       !gdown "https://drive.google.com/uc?id=1Tdn3yqpZ79X7R1Ql0zNlNScB1Dv9Fp76"
     
 * Write YOLOR Configuration
-      <pre><code>import yaml
+      
+      import yaml
       with open(dataset.location + "/data.yaml") as f:
           dataMap = yaml.safe_load(f)
 
@@ -86,9 +88,10 @@ Prepare pretrained weight
       @register_line_cell_magic
       def writetemplate(line, cell):
           with open(line, 'w') as f:
-              f.write(cell.format(**globals()))</code></pre>
+              f.write(cell.format(**globals()))
 
 * Write YAML template
+      
       [here](https://github.com/Setiawanfikri/Training/blob/main/YAML%20configuration)
       copy and paste to colab environment
 
