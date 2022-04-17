@@ -11,7 +11,7 @@ implementation of paper - [You Only Learn One Representation: Unified Network fo
 
 To get the results on the table, please use [this branch](https://github.com/WongKinYiu/yolor/tree/paper).
 
-## Training in Colab Environment
+## Training Preparations
 
 Install YOLOR dependencies
 <details><summary> <b>Expand</b> </summary>
