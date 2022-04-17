@@ -11,7 +11,7 @@ implementation of paper - [You Only Learn One Representation: Unified Network fo
 
 To get the results on the table, please use [this branch](https://github.com/WongKinYiu/yolor/tree/paper).
 
-## Training
+## Training in Colab Environment
 
 Install YOLOR dependencies
 <details><summary> <b>Expand</b> </summary>
@@ -43,31 +43,25 @@ Install YOLOR dependencies
 
 </details>
 
-Colab environment
+Download custom YOLOR dataset
 <details><summary> <b>Expand</b> </summary>
   
-```
-git clone https://github.com/WongKinYiu/yolor
-cd yolor
-
-# pip install required packages
-pip install -qr requirements.txt
-
-# install mish-cuda if you want to use mish activation
-# https://github.com/thomasbrandon/mish-cuda
-# https://github.com/JunnYu/mish-cuda
-git clone https://github.com/JunnYu/mish-cuda
-cd mish-cuda
-python setup.py build install
-cd ..
-
-# install pytorch_wavelets if you want to use dwt down-sampling module
-# https://github.com/fbcotter/pytorch_wavelets
-git clone https://github.com/fbcotter/pytorch_wavelets
-cd pytorch_wavelets
-pip install .
-cd ..
-```
+* Install Roboflow dependencies
+  
+      !pip install -q roboflow
+      from roboflow import Roboflow
+      rf = Roboflow(model_format="yolov5", notebook="roboflow-yolor")
+  
+* Download Dataset from Roboflow
+    
+      %cd /content/yolor
+      from roboflow import Roboflow
+      rf = Roboflow(api_key="85cNlMEKyhhCdduuKla4")
+      project = rf.workspace("joseph-nelson").project("uno-cards")
+      dataset = project.version(3).download("yolov5")
+  
+* See YAML category/class
+      %cat {dataset.location}/data.yaml
 
 </details>
 
