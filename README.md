@@ -10,6 +10,19 @@ implementation of paper - [You Only Learn One Representation: Unified Network fo
 
 To get the results on the table, please use [this branch](https://github.com/WongKinYiu/yolor/tree/paper).
 
+This tutorial is based on the YOLOR repository by Wong Kin-Yiu & YOLOR custom dataset training colab notebook by Roboflow. This repository shows training on your own custom objects.
+
+To train custom dataset using YOLOR take the following steps:
+
+* Install YOLOR dependencies
+* Download custom YOLOR dataset
+* Prepare Pre-Trained Weights
+* Custom dataset YOLOR training
+* Evaluate YOLOR performance
+* Visualize YOLOR training data
+* Run YOLOR inference on test images
+* Export saved YOLOR weights
+
 ## Training Preparations
 
 Install YOLOR dependencies
@@ -178,15 +191,13 @@ Run Inference with trained weight
 ## Export Trained Weight to GDrive
 * Login to GDrive
     
-      <pre><code>from google.colab import drive
-      drive.mount('/content/gdrive')</code></pre>
+      from google.colab import drive
+      drive.mount('/content/gdrive')
   
 * Export Trained Weight
   
-      <pre><code>%cp /content/yolor/runs/train/yolor_p6/weights/best.pt /content/gdrive/My Drive</code></pre>
+      %cp /content/yolor/runs/train/yolor_p6/weights/best.pt /content/gdrive/My Drive
     
-## Finish
-
 ## Acknowledgements
 
 <details><summary> <b>Expand</b> </summary>
