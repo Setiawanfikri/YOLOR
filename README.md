@@ -66,16 +66,16 @@ Download custom YOLOR dataset
 
 </details>
 
-Prepare pretrained weight
+Prepare Pre-trained weight
 <details><summary> <b>Expand</b> </summary>
 
-* Get Pre-Trained YOLOR_p6.pt
+* Get pretrained YOLOR_p6.pt
       
       %cd /content/yolor
       !pip install gdown
       !gdown "https://drive.google.com/uc?id=1Tdn3yqpZ79X7R1Ql0zNlNScB1Dv9Fp76"
     
-* Write YOLOR Configuration
+* Write YOLOR configuration
       
       import yaml
       with open(dataset.location + "/data.yaml") as f:
@@ -91,7 +91,6 @@ Prepare pretrained weight
               f.write(cell.format(**globals()))
 
 * Write YAML template
-      
       [here](https://github.com/Setiawanfikri/Training/blob/main/YAML%20configuration)
       copy and paste to colab environment
 
