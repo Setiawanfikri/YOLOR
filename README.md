@@ -75,7 +75,7 @@ Prepare Pre-trained weight
       !pip install gdown
       !gdown "https://drive.google.com/uc?id=1Tdn3yqpZ79X7R1Ql0zNlNScB1Dv9Fp76"
     
-* Write YOLOR configuration
+* Prepare YOLOR YAML configuration
       
       import yaml
       with open(dataset.location + "/data.yaml") as f:
@@ -90,49 +90,27 @@ Prepare Pre-trained weight
           with open(line, 'w') as f:
               f.write(cell.format(**globals()))
 
-* Write YAML template
+* Write YAML configuration
       [here](https://github.com/Setiawanfikri/Training/blob/main/YAML%20configuration)
       copy and paste to colab environment
 
 </details>
 
-## Testing
-
-[`yolor_p6.pt`](https://drive.google.com/file/d/1Tdn3yqpZ79X7R1Ql0zNlNScB1Dv9Fp76/view?usp=sharing)
-
-```
-python test.py --data data/coco.yaml --img 1280 --batch 32 --conf 0.001 --iou 0.65 --device 0 --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --name yolor_p6_val
-```
-
-You will get the results:
-
-```
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.52510
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.70718
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.57520
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.37058
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.56878
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.66102
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.39181
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.65229
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.71441
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.57755
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.75337
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.84013
-```
-
 ## Training
 
-Single GPU training:
+Custom dataset training:
+ * img: define input image size
+ * batch: determine batch size
+ * epochs: define the number of training epochs. (Note: often, 3000+ are common here!)
+ * data: set the path to our yaml file
+ * cfg: specify our model configuration
+ * weights: specify a custom path to weights. (Note: We can specify the pretrained weights we downloaded up above with the shell script)
+ * name: result names
+ * hyp: Define the hyperparamters for training
 
 ```
-python train.py --batch-size 8 --img 1280 1280 --data coco.yaml --cfg cfg/yolor_p6.cfg --weights '' --device 0 --name yolor_p6 --hyp hyp.scratch.1280.yaml --epochs 300
-```
-
-Multiple GPU training:
-
-```
-python -m torch.distributed.launch --nproc_per_node 2 --master_port 9527 train.py --batch-size 16 --img 1280 1280 --data coco.yaml --cfg cfg/yolor_p6.cfg --weights '' --device 0,1 --sync-bn --name yolor_p6 --hyp hyp.scratch.1280.yaml --epochs 300
+%cd /content/yolor
+!python train.py --batch-size 8 --img 416 416 --data {dataset.location}/data.yaml --cfg cfg/yolor_p6.cfg --weights '/content/yolor/yolor_p6.pt' --device 0 --name yolor_p6 --hyp '/content/yolor/data/hyp.scratch.1280.yaml' --epochs 8
 ```
 
 Training schedule in the paper:
@@ -143,7 +121,7 @@ python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 tune.py
 python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train.py --batch-size 64 --img 1280 1280 --data data/coco.yaml --cfg cfg/yolor_p6.cfg --weights 'runs/train/yolor_p6-tune/weights/epoch_424.pt' --device 0,1,2,3,4,5,6,7 --sync-bn --name yolor_p6-fine --hyp hyp.finetune.1280.yaml --epochs 450
 ```
 
-## Inference
+## Evaluate Custom YOLOR Detector Performance
 
 [`yolor_p6.pt`](https://drive.google.com/file/d/1Tdn3yqpZ79X7R1Ql0zNlNScB1Dv9Fp76/view?usp=sharing)
 
