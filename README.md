@@ -18,28 +18,28 @@ Install YOLOR dependencies
 
 * clone YOLOR repository
       
-      <pre><code>!git clone https://github.com/roboflow-ai/yolor
+      !git clone https://github.com/Setiawanfikri/YOLOR
       %cd yolor
-      !git reset --hard eb3ef0b7472413d6740f5cde39beb1a2f5b8b5d1</code></pre>
+      !git reset --hard eb3ef0b7472413d6740f5cde39beb1a2f5b8b5d1
   
 * Install necessary dependencies
       
-      <pre><code>!pip install -qr requirements.txt</code></pre>
+      !pip install -qr requirements.txt
   
 * Install Mish CUDA
   
-      <pre><code>!git clone https://github.com/JunnYu/mish-cuda
+      !git clone https://github.com/JunnYu/mish-cuda
       %cd mish-cuda
       !git reset --hard 6f38976064cbcc4782f4212d7c0c5f6dd5e315a8
       !python setup.py build install
-      %cd ..</code></pre>
+      %cd ..
   
 * Install PyTorch Wavelets
       
-      <pre><code>!git clone https://github.com/fbcotter/pytorch_wavelets
+      !git clone https://github.com/fbcotter/pytorch_wavelets
       %cd pytorch_wavelets
       !pip install .
-      %cd ..</code></pre>
+      %cd ..
 
 </details>
 
