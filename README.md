@@ -66,23 +66,31 @@ Download custom YOLOR dataset
 
 </details>
 
-Prepare COCO dataset
-<details><summary> <b>Expand</b> </summary>
-
-```
-cd /yolor
-bash scripts/get_coco.sh
-```
-
-</details>
-
 Prepare pretrained weight
 <details><summary> <b>Expand</b> </summary>
 
-```
-cd /yolor
-bash scripts/get_pretrain.sh
-```
+* Get Pre-Trained YOLOR_p6.pt
+      %cd /content/yolor
+      !pip install gdown
+      !gdown "https://drive.google.com/uc?id=1Tdn3yqpZ79X7R1Ql0zNlNScB1Dv9Fp76"
+    
+* Write YOLOR Configuration
+      <pre><code>import yaml
+      with open(dataset.location + "/data.yaml") as f:
+          dataMap = yaml.safe_load(f)
+
+      num_classes = len(dataMap['names'])
+      num_filters = (num_classes + 5) * 3
+      from IPython.core.magic import register_line_cell_magic
+
+      @register_line_cell_magic
+      def writetemplate(line, cell):
+          with open(line, 'w') as f:
+              f.write(cell.format(**globals()))</code></pre>
+
+* Write YAML template
+      [here](https://github.com/Setiawanfikri/Training/blob/main/YAML%20configuration)
+      copy and paste to colab environment
 
 </details>
 
