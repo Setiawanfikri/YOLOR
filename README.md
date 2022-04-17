@@ -2,7 +2,6 @@
 implementation of paper - [You Only Learn One Representation: Unified Network for Multiple Tasks](https://arxiv.org/abs/2105.04206)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1NIghFeKQGFRVRPh553JaQXeIMlI1xh95#)
-
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/you-only-learn-one-representation-unified/real-time-object-detection-on-coco)](https://paperswithcode.com/sota/real-time-object-detection-on-coco?p=you-only-learn-one-representation-unified)
 
 ![Unified Network](https://github.com/WongKinYiu/yolor/blob/main/figure/unifued_network.png)
@@ -176,25 +175,24 @@ Run Inference with trained weight
       
 </details>
 
-## Citation
-
-```
-@article{wang2021you,
-  title={You Only Learn One Representation: Unified Network for Multiple Tasks},
-  author={Wang, Chien-Yao and Yeh, I-Hau and Liao, Hong-Yuan Mark},
-  journal={arXiv preprint arXiv:2105.04206},
-  year={2021}
-}
-```
+## Export Trained Weight to GDrive
+* Login to GDrive
+    
+      <pre><code>from google.colab import drive
+      drive.mount('/content/gdrive')</code></pre>
+  
+* Export Trained Weight
+  
+      <pre><code>%cp /content/yolor/runs/train/yolor_p6/weights/best.pt /content/gdrive/My Drive</code></pre>
+    
+## Finish
 
 ## Acknowledgements
 
 <details><summary> <b>Expand</b> </summary>
 
-* [https://github.com/AlexeyAB/darknet](https://github.com/AlexeyAB/darknet)
-* [https://github.com/WongKinYiu/PyTorch_YOLOv4](https://github.com/WongKinYiu/PyTorch_YOLOv4)
-* [https://github.com/WongKinYiu/ScaledYOLOv4](https://github.com/WongKinYiu/ScaledYOLOv4)
-* [https://github.com/ultralytics/yolov3](https://github.com/ultralytics/yolov3)
-* [https://github.com/ultralytics/yolov5](https://github.com/ultralytics/yolov5)
+* [WongKinYiu YOLOR Repository](https://github.com/WongKinYiu/yolor)
+* [Roboflow YOLOR Colab Notebook](https://colab.research.google.com/drive/1e1Uk9SjxBaagu7aoGZ4oTcqePhnMLM23?usp=sharing)
+
 
 </details>
