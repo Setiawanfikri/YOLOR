@@ -113,25 +113,33 @@ Custom dataset training:
 !python train.py --batch-size 8 --img 416 416 --data {dataset.location}/data.yaml --cfg cfg/yolor_p6.cfg --weights '/content/yolor/yolor_p6.pt' --device 0 --name yolor_p6 --hyp '/content/yolor/data/hyp.scratch.1280.yaml' --epochs 8
 ```
 
-Training schedule in the paper:
-
-```
-python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train.py --batch-size 64 --img 1280 1280 --data data/coco.yaml --cfg cfg/yolor_p6.cfg --weights '' --device 0,1,2,3,4,5,6,7 --sync-bn --name yolor_p6 --hyp hyp.scratch.1280.yaml --epochs 300
-python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 tune.py --batch-size 64 --img 1280 1280 --data data/coco.yaml --cfg cfg/yolor_p6.cfg --weights 'runs/train/yolor_p6/weights/last_298.pt' --device 0,1,2,3,4,5,6,7 --sync-bn --name yolor_p6-tune --hyp hyp.finetune.1280.yaml --epochs 450
-python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train.py --batch-size 64 --img 1280 1280 --data data/coco.yaml --cfg cfg/yolor_p6.cfg --weights 'runs/train/yolor_p6-tune/weights/epoch_424.pt' --device 0,1,2,3,4,5,6,7 --sync-bn --name yolor_p6-fine --hyp hyp.finetune.1280.yaml --epochs 450
-```
-
 ## Evaluate Custom YOLOR Detector Performance
 
-[`yolor_p6.pt`](https://drive.google.com/file/d/1Tdn3yqpZ79X7R1Ql0zNlNScB1Dv9Fp76/view?usp=sharing)
-
-```
-python detect.py --source inference/images/horses.jpg --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.25 --img-size 1280 --device 0
-```
-
-You will get the results:
-
-![horses](https://github.com/WongKinYiu/yolor/blob/main/inference/output/horses.jpg)
+Evaluate custom YOLOR model
+<details><summary> <b>Expand</b> </summary>
+ 
+* Start Tensorboard, run after training is finished. Logs save in runs folder
+      
+      %load_ext tensorboard
+      %tensorboard --logdir runs
+  
+* Plots data, if tensorboard isn't working
+  
+      from IPython.display import Image
+      from utils.plots import plot_results  # plot results.txt as results.png
+      Image(filename='/content/yolor/runs/train/yolor_p62/results.png', width=1000)  # view results.png
+  
+* Display ground data
+      
+      print("GROUND TRUTH TRAINING DATA:")
+      Image(filename='/content/yolor/runs/train/yolor_p62/train_batch0.jpg', width=900)
+      
+* Display augmented data
+      
+      print("AUGMENTED DATA:")
+      Image(filename='/content/yolor/runs/train/yolor_p62/train_batch0.jpg', width=900)
+      
+</details>
 
 ## Citation
 
