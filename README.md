@@ -166,15 +166,13 @@ Run Inference with trained weight
       !python detect.py --weights "runs/train/yolor_p62/weights/best_overall.pt" --conf 0.5 --source /content/yolor/Uno-Cards-3/test/images --names ../data.names --cfg cfg/yolor_p6.cfg
      
 * Display inference on All Test Images
-   
-     '''
-     import glob
-     from IPython.display import Image, display
+      
+      import glob
+      from IPython.display import Image, display
 
-     for imageName in glob.glob('/content/yolor/inference/output/*.jpg'): #assuming JPG
-         display(Image(filename=imageName))
-         print("\n")
-     '''
+      for imageName in glob.glob('/content/yolor/inference/output/*.jpg'): #assuming JPG
+          display(Image(filename=imageName))
+          print("\n")
       
 </details>
 
