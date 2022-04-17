@@ -141,6 +141,41 @@ Evaluate custom YOLOR model
       
 </details>
 
+Run Inference with trained weight
+<details><summary> <b>Expand</b> </summary>
+      
+* See directory in runs trained folder
+    
+      %ls runs/train/yolor_p6/weights
+      
+* Create names file for model
+    
+      import yaml
+      import ast
+      with open("/content/yolor/Uno-Cards-3/data.yaml", 'r') as stream:
+          names = str(yaml.safe_load(stream)['names'])
+
+      namesFile = open("../data.names", "w+")
+      names = ast.literal_eval(names)
+      for name in names:
+        namesFile.write(name +'\n')
+      namesFile.close()
+      
+* Runs Trained Model with Test Images
+    
+     !python detect.py --weights "runs/train/yolor_p62/weights/best_overall.pt" --conf 0.5 --source /content/yolor/Uno-Cards-3/test/images --names ../data.names --cfg cfg/yolor_p6.cfg
+     
+* Display inference on All Test Images
+   
+     import glob
+     from IPython.display import Image, display
+
+     for imageName in glob.glob('/content/yolor/inference/output/*.jpg'): #assuming JPG
+         display(Image(filename=imageName))
+         print("\n")
+      
+</details>
+
 ## Citation
 
 ```
