@@ -203,7 +203,6 @@ Run Inference with trained weight
 <details><summary> <b>Expand</b> </summary>
 
 * [WongKinYiu YOLOR Repository](https://github.com/WongKinYiu/yolor)
-* [Roboflow YOLOR Colab Notebook](https://colab.research.google.com/drive/1e1Uk9SjxBaagu7aoGZ4oTcqePhnMLM23?usp=sharing)
-
+* [How To Train YOLOR on Custom Dataset by Roboflow](https://blog.roboflow.com/train-yolor-on-a-custom-dataset/)
 
 </details>
