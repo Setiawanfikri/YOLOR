@@ -30,7 +30,7 @@ Install YOLOR dependencies
 
 * clone YOLOR repository
       
-      !git clone https://github.com/Setiawanfikri/YOLOR
+      !git clone https://github.com/Setiawanfikri/yolor.git
       %cd yolor
       !git reset --hard eb3ef0b7472413d6740f5cde39beb1a2f5b8b5d1
   
