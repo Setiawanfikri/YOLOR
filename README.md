@@ -139,17 +139,17 @@ Evaluate custom YOLOR model
   
       from IPython.display import Image
       from utils.plots import plot_results  # plot results.txt as results.png
-      Image(filename='/content/yolor/runs/train/yolor_p62/results.png', width=1000)  # view results.png
+      Image(filename='/content/yolor/runs/train/yolor_p6/results.png', width=1000)  # view results.png
   
 * Display ground data
       
       print("GROUND TRUTH TRAINING DATA:")
-      Image(filename='/content/yolor/runs/train/yolor_p62/train_batch0.jpg', width=900)
+      Image(filename='/content/yolor/runs/train/yolor_p6/train_batch0.jpg', width=900)
       
 * Display augmented data
       
       print("AUGMENTED DATA:")
-      Image(filename='/content/yolor/runs/train/yolor_p62/train_batch0.jpg', width=900)
+      Image(filename='/content/yolor/runs/train/yolor_p6/train_batch0.jpg', width=900)
       
 </details>
 
@@ -175,7 +175,7 @@ Run Inference with trained weight
       
 * Runs Trained Model with Test Images
       
-      !python detect.py --weights "runs/train/yolor_p62/weights/best_overall.pt" --conf 0.5 --source /content/yolor/Uno-Cards-3/test/images --names ../data.names --cfg cfg/yolor_p6.cfg
+      !python detect.py --weights "runs/train/yolor_p6/weights/best.pt" --conf 0.5 --source /content/yolor/Uno-Cards-3/test/images --names ../data.names --cfg cfg/yolor_p6.cfg
      
 * Display inference on All Test Images
       
